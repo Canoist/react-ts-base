@@ -10,6 +10,7 @@ const AddTodo: React.FC<IAddTodo> = ({ onClick }) => {
     const handleClick = () => {
         if (inputRef.current) {
             onClick(inputRef.current.value);
+            inputRef.current.value = "";
         }
     };
 

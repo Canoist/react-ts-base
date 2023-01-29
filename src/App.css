@@ -7,6 +7,15 @@
     text-align: center;
 }
 
+input {
+    padding: 5px;
+}
+
+button {
+    padding: 5px;
+    margin-left: 5px;
+}
+
 ul {
     list-style: none;
     padding: 0;

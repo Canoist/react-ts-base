@@ -1,4 +1,4 @@
-import React, { DetailedHTMLProps, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import AddTodo from "./components/AddTodo";
 import { ITodo } from "./types";
 import TodoList from "./components/TodoList";
