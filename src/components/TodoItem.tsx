@@ -4,6 +4,8 @@ import { ITodo } from "../types";
 interface ITodoItem extends ITodo {
     children?: React.ReactNode;
     style?: React.CSSProperties;
+    onDelete: (id: number) => void;
+    toggleCheck: (id: number) => void;
 }
 
 const TodoItem: React.FC<ITodoItem> = ({
@@ -12,12 +14,23 @@ const TodoItem: React.FC<ITodoItem> = ({
     completed,
     children,
     style = {},
+    onDelete,
+    toggleCheck,
 }) => {
     return (
         <li>
-            <input type="checkbox" checked={completed} placeholder="check" />
+            <input
+                type="checkbox"
+                checked={completed}
+                placeholder="check"
+                onChange={() => {
+                    toggleCheck(id);
+                }}
+            />
             <span>{title}</span>
-            <span>&times;</span>
+            <span onClick={() => onDelete(id)} className="delete">
+                &times;
+            </span>
             {children}
         </li>
     );

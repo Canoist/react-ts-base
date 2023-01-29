@@ -1,41 +1,50 @@
-import React, { useState } from "react";
-import TodoItem from "./components/TodoItem";
+import React, { DetailedHTMLProps, useEffect, useState } from "react";
 import AddTodo from "./components/AddTodo";
 import { ITodo } from "./types";
+import TodoList from "./components/TodoList";
+import "./App.css";
 
 function App() {
-    const [text, setText] = useState<string>("");
     const [todos, setTodos] = useState<ITodo[]>([]);
 
-    const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
-        setText(target.value);
-    };
+    useEffect(() => {
+        fetch("https://jsonplaceholder.typicode.com/todos")
+            .then((res) => res.json())
+            .then((data: ITodo[]) => {
+                setTodos(data);
+            });
+    }, []);
 
-    const createTodo = () => {
+    const createTodo = (text: string) => {
         const newTodo: ITodo = {
             completed: false,
             id: Date.now(),
             title: text,
         };
         setTodos([newTodo, ...todos]);
-        setText("");
+    };
+
+    const handleChangeCheck = (id: number) => {
+        setTodos(
+            todos.map((todo) =>
+                todo.id !== id ? todo : { ...todo, completed: !todo.completed }
+            )
+        );
+    };
+
+    const handleDelete = (id: number): void => {
+        const filteredTodos = todos.filter((todo) => todo.id !== id);
+        setTodos(filteredTodos);
     };
 
     return (
         <div className="App">
-            <AddTodo
-                value={text}
-                onChange={handleChange}
-                onClick={createTodo}
+            <AddTodo onClick={createTodo} />
+            <TodoList
+                todos={todos}
+                onDelete={handleDelete}
+                toggleCheck={handleChangeCheck}
             />
-            {todos.map((todo: ITodo) => (
-                <TodoItem
-                    id={todo.id}
-                    title={todo.title}
-                    completed={todo.completed}
-                    style={{ border: "1px solid black" }}
-                />
-            ))}
         </div>
     );
 }

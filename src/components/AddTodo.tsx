@@ -1,21 +1,22 @@
-import React from "react";
+import React, { useRef } from "react";
 
 interface IAddTodo {
-    value: string;
-    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    onClick: () => void;
+    onClick: (text: string) => void;
 }
 
-const AddTodo: React.FC<IAddTodo> = ({ value, onChange, onClick }) => {
+const AddTodo: React.FC<IAddTodo> = ({ onClick }) => {
+    const inputRef = useRef<HTMLInputElement>(null);
+
+    const handleClick = () => {
+        if (inputRef.current) {
+            onClick(inputRef.current.value);
+        }
+    };
+
     return (
         <>
-            <input
-                type="text"
-                placeholder="new todo"
-                value={value}
-                onChange={onChange}
-            />
-            <button onClick={onClick}>Add todo</button>
+            <input type="text" placeholder="new todo" ref={inputRef} />
+            <button onClick={handleClick}>Add todo</button>
         </>
     );
 };
