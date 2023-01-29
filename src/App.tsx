@@ -1,17 +1,23 @@
 import React, { useState } from "react";
 import TodoItem from "./components/TodoItem";
 import AddTodo from "./components/AddTodo";
+import { ITodo } from "./types";
 
 function App() {
     const [text, setText] = useState<string>("");
-    const [todos, setTodos] = useState<string[]>([""]);
+    const [todos, setTodos] = useState<ITodo[]>([]);
 
     const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
         setText(target.value);
     };
 
     const createTodo = () => {
-        setTodos([text, ...todos]);
+        const newTodo: ITodo = {
+            completed: false,
+            id: Date.now(),
+            title: text,
+        };
+        setTodos([newTodo, ...todos]);
         setText("");
     };
 
@@ -22,12 +28,14 @@ function App() {
                 onChange={handleChange}
                 onClick={createTodo}
             />
-            <TodoItem
-                id="123"
-                title="Title"
-                completed={true}
-                style={{ border: "1px solid black" }}
-            />
+            {todos.map((todo: ITodo) => (
+                <TodoItem
+                    id={todo.id}
+                    title={todo.title}
+                    completed={todo.completed}
+                    style={{ border: "1px solid black" }}
+                />
+            ))}
         </div>
     );
 }

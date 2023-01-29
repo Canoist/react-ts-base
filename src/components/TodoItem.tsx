@@ -1,9 +1,7 @@
 import React from "react";
+import { ITodo } from "../types";
 
-interface ITodoItem {
-    id: string;
-    title: string;
-    completed: boolean;
+interface ITodoItem extends ITodo {
     children?: React.ReactNode;
     style?: React.CSSProperties;
 }
