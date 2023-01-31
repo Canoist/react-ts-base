@@ -1,6 +1,5 @@
 import { ReactComponent as IconMoon } from "assets/icon-moon.svg";
 import { ReactComponent as IconSun } from "assets/icon-sun.svg";
-
 import React, { useEffect, useState } from "react";
 import styles from "./ThemeSwitcher.module.scss";
 
