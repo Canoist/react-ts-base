@@ -1,4 +1,5 @@
-import { ReactComponent as SearchIcon } from "assets/search-icon.svg";
+import { ReactComponent as SearchIcon } from "assets/icon-search.svg";
+import { Button } from "components/Button";
 import React, { useRef } from "react";
 import { GitHubResError } from "types";
 import styles from "./Search.module.scss";
@@ -30,7 +31,7 @@ export const Search = ({ error, onSubmit }: ISearch) => {
                 placeholder="Search GitHub username..."
             />
             {!!error && <div className={styles.error}>{error.message}</div>}
-            Search
+            <Button content="Search" />
         </form>
     );
 };
