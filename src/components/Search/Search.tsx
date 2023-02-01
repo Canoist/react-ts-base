@@ -10,20 +10,30 @@ interface ISearch {
 }
 
 export const Search = ({ error, onSubmit }: ISearch) => {
-    const searchRef = useRef<HTMLFormElement | null>(null);
+    const searchRef = useRef<HTMLInputElement | null>(null);
 
-    const handleSubmit = (event: React.FormEvent) => {};
+    const handleSubmit = (event: React.FormEvent) => {
+        event.preventDefault();
+
+        const content = searchRef.current?.value || "";
+        if (content) {
+            onSubmit(content);
+            if (searchRef.current) {
+                searchRef.current.value = "";
+            }
+        }
+    };
 
     return (
         <form
             className={styles.search}
-            ref={searchRef}
-            onSubmit={() => handleSubmit}
+            onSubmit={handleSubmit}
             autoComplete="off">
             <label htmlFor="search" className={styles.label}>
                 <SearchIcon />
             </label>
             <input
+                ref={searchRef}
                 type="text"
                 className={styles.textField}
                 id="search"
