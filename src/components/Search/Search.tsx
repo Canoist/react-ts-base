@@ -1,6 +1,6 @@
 import { ReactComponent as SearchIcon } from "assets/icon-search.svg";
 import { Button } from "components/Button";
-import React, { useRef } from "react";
+import React from "react";
 import { GitHubResError } from "types";
 import styles from "./Search.module.scss";
 
@@ -9,18 +9,19 @@ interface ISearch {
     onSubmit: (text: string) => void;
 }
 
+interface FormFields {
+    username: HTMLInputElement;
+}
+
 export const Search = ({ error, onSubmit }: ISearch) => {
-    const searchRef = useRef<HTMLInputElement | null>(null);
-
-    const handleSubmit = (event: React.FormEvent) => {
+    const handleSubmit = (
+        event: React.FormEvent<HTMLFormElement & FormFields>
+    ) => {
         event.preventDefault();
-
-        const content = searchRef.current?.value || "";
-        if (content) {
-            onSubmit(content);
-            if (searchRef.current) {
-                searchRef.current.value = "";
-            }
+        const text = event.currentTarget.username.value;
+        if (text) {
+            onSubmit(text);
+            event.currentTarget.reset();
         }
     };
 
@@ -33,7 +34,6 @@ export const Search = ({ error, onSubmit }: ISearch) => {
                 <SearchIcon />
             </label>
             <input
-                ref={searchRef}
                 type="text"
                 className={styles.textField}
                 id="search"
