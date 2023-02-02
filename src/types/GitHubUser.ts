@@ -1,4 +1,4 @@
-export interface GitHubUser {
+export interface LocalGitHubUser {
     login: string;
     id: number;
     node_id: string;
@@ -33,7 +33,7 @@ export interface GitHubUser {
     updated: Date;
 }
 
-export interface LocalGitHubUser {
+export interface GitHubUser {
     login: string;
     id: number;
     node_id: string;
@@ -59,13 +59,13 @@ export interface LocalGitHubUser {
     email: null | string;
     hireable: boolean;
     bio: null | string;
-    twitter: null | string;
+    twitter_username: null | string;
     public_repos: number;
     public_gists: number;
     followers: number;
     following: number;
-    created_at: Date;
-    updated_at: Date;
+    created_at: string;
+    updated_at: string;
 }
 
 export interface GitHubResError {
