@@ -1,3 +1,4 @@
+import { UserStatInfo } from "components/UserStatInfo";
 import React from "react";
 import { GitHubUser } from "types";
 import styles from "./UserStat.module.scss";
@@ -7,17 +8,8 @@ export interface IUserStat
 
 export const UserStat = ({ public_repos, followers, following }: IUserStat) => (
     <div className={styles.userStat}>
-        <div className={styles.styleInfo}>
-            <div className={styles.infoTitle}>Repos</div>
-            <div className={styles.infoNumber}>{public_repos}</div>
-        </div>
-        <div className={styles.styleInfo}>
-            <div className={styles.infoTitle}>Followers</div>
-            <div className={styles.infoNumber}>{followers}</div>
-        </div>
-        <div className={styles.styleInfo}>
-            <div className={styles.infoTitle}>Following</div>
-            <div className={styles.infoNumber}>{following}</div>
-        </div>
+        <UserStatInfo title="Repos" count={public_repos} />
+        <UserStatInfo title="Followers" count={followers} />
+        <UserStatInfo title="Following" count={following} />
     </div>
 );
