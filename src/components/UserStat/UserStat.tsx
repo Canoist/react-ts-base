@@ -2,7 +2,7 @@ import React from "react";
 import { GitHubUser } from "types";
 import styles from "./UserStat.module.scss";
 
-interface IUserStat
+export interface IUserStat
     extends Pick<GitHubUser, "following" | "followers" | "public_repos"> {}
 
 export const UserStat = ({ public_repos, followers, following }: IUserStat) => (

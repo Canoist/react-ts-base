@@ -1,8 +1,17 @@
+import { IUserStat, UserStat } from "components/UserStat";
 import React from "react";
 import styles from "./UserCard.module.scss";
 
-interface IUserCard {}
+interface IUserCard extends IUserStat {}
 
-export const UserCard = ({}: IUserCard) => (
-    <div className={styles.userCard}>UserCard</div>
-);
+export const UserCard = ({ public_repos, followers, following }: IUserCard) => {
+    return (
+        <div className={styles.userCard}>
+            <UserStat
+                public_repos={public_repos}
+                followers={followers}
+                following={following}
+            />
+        </div>
+    );
+};

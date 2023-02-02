@@ -1,6 +1,8 @@
 import { Container } from "components/Container";
 import { Header } from "components/Header";
 import { Search } from "components/Search";
+import { UserCard } from "components/UserCard";
+import { userMock } from "mock";
 import React from "react";
 import "./App.css";
 
@@ -16,6 +18,11 @@ function App() {
             <Container>
                 <Header />
                 <Search error={mockError} onSubmit={() => {}} />
+                <UserCard
+                    following={userMock.following}
+                    followers={userMock.followers}
+                    public_repos={userMock.public_repos}
+                />
             </Container>
         </>
     );
