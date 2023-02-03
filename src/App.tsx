@@ -22,6 +22,9 @@ function App() {
                     following={userMock.following}
                     followers={userMock.followers}
                     public_repos={userMock.public_repos}
+                    created_at={userMock.created_at}
+                    login={userMock.login}
+                    name={userMock.name}
                 />
             </Container>
         </>
