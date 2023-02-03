@@ -1,4 +1,5 @@
 import { UserAvatar } from "components/UserAvatar";
+import { UserBio } from "components/UserBio";
 import { UserStat } from "components/UserStat";
 import { UserTitle } from "components/UserTitle";
 import React from "react";
@@ -16,6 +17,7 @@ export const UserCard = (props: IUserCard) => {
                 login={props.login}
                 name={props.name}
             />
+            <UserBio bio={props.bio} />
             <UserStat
                 public_repos={props.public_repos}
                 followers={props.followers}
