@@ -27,8 +27,9 @@
         font-size: 0.75rem;
         line-height: 1.5;
 
-        &::before {
-            content: "@";
+        a {
+            text-decoration: none;
+            color: inherit;
         }
 
         @media (min-width: 767px) {
@@ -41,10 +42,6 @@
         font-size: 0.75rem;
         line-height: 1.5;
         margin-top: 6px;
-
-        &::before {
-            content: "Joined ";
-        }
 
         @media (min-width: 767px) {
             font-size: 1rem;
