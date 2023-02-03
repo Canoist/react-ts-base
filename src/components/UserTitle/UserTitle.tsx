@@ -18,7 +18,10 @@ export const UserTitle = ({ created_at, login, name }: IUserTitle) => {
         <div className={styles.userTitle}>
             <h2>{name}</h2>
             <h3>
-                <a href={"https://github.com/" + login} target="blank">
+                <a
+                    href={"https://github.com/" + login}
+                    target="_blank"
+                    rel="noreferrer">
                     @{login}
                 </a>
             </h3>

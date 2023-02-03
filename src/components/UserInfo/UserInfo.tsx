@@ -2,6 +2,7 @@ import { ReactComponent as CompanyIcon } from "assets/icon-company.svg";
 import { ReactComponent as LocationIcon } from "assets/icon-location.svg";
 import { ReactComponent as TwitterIcon } from "assets/icon-twitter.svg";
 import { ReactComponent as BlogIcon } from "assets/icon-website.svg";
+import { IUserInfoItem, UserInfoItem } from "components/UserInfoItem";
 import React from "react";
 import { GitHubUser } from "types";
 import styles from "./UserInfo.module.scss";
@@ -18,7 +19,7 @@ export const UserInfo = ({
     location,
     twitter_username,
 }: IUserInfo) => {
-    const items: {}[] = [
+    const items: IUserInfoItem[] = [
         {
             icon: <LocationIcon />,
             text: location,
@@ -41,7 +42,7 @@ export const UserInfo = ({
     return (
         <div className={styles.userInfo}>
             {items.map((item, index) => (
-                <div key={index}>aas</div>
+                <UserInfoItem {...item} key={index} />
             ))}
         </div>
     );
