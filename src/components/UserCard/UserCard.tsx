@@ -1,9 +1,10 @@
-import { IUserStat, UserStat } from "components/UserStat";
-import { IUserTitle, UserTitle } from "components/UserTitle";
+import { UserStat } from "components/UserStat";
+import { UserTitle } from "components/UserTitle";
 import React from "react";
+import { GitHubUser } from "types";
 import styles from "./UserCard.module.scss";
 
-interface IUserCard extends IUserStat, IUserTitle {}
+interface IUserCard extends GitHubUser {}
 
 export const UserCard = ({
     public_repos,
