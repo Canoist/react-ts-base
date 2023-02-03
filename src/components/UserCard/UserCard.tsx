@@ -1,5 +1,6 @@
 import { UserAvatar } from "components/UserAvatar";
 import { UserBio } from "components/UserBio";
+import { UserInfo } from "components/UserInfo";
 import { UserStat } from "components/UserStat";
 import { UserTitle } from "components/UserTitle";
 import React from "react";
@@ -22,6 +23,12 @@ export const UserCard = (props: IUserCard) => {
                 public_repos={props.public_repos}
                 followers={props.followers}
                 following={props.following}
+            />
+            <UserInfo
+                twitter_username={props.twitter_username}
+                location={props.location}
+                company={props.company}
+                blog={props.blog}
             />
         </div>
     );
