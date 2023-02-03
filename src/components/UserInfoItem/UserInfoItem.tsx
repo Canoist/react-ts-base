@@ -17,7 +17,10 @@ export const UserInfoItem = ({ icon, isLink, text }: IUserInfoItem) => {
     }
 
     return (
-        <div className={`${styles.infoItem}${text ? "" : ` ${styles.empty}`}`}>
+        <div
+            className={`${styles.userInfoItem}${
+                text ? "" : ` ${styles.empty}`
+            }`}>
             {icon}
             <div>
                 {isLink && text ? (
